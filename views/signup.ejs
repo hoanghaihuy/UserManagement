@@ -1,0 +1,18 @@
+<form action="/users/signUpAccount" method="post" class="form-login">
+    <h2 class="form-signin-heading">CREATE NEW ACCOUNT</h2>
+
+    <label for="firstName">First name</label>
+    <input type="text" class="form-control" readonly onfocus="this.removeAttribute('readonly');" name="firstName">
+    <label for="lastName">Last name</label>
+    <input type="text" class="form-control" readonly onfocus="this.removeAttribute('readonly');" name="lastName">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" readonly onfocus="this.removeAttribute('readonly');" name="email">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" readonly onfocus="this.removeAttribute('readonly');" name="password">
+    <br>
+    <input type="radio" name="role" value="admin"> Admin
+    <input type="radio" name="role" value="guest"> Guest
+    <br>
+    <br>
+    <input type="submit" value="Sign Up" class="btn btn-dark">
+</form>

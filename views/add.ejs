@@ -1,0 +1,24 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/users/list">Users</a>
+    </li>
+    <li class="breadcrumb-item active">Add</li>
+</ol>
+<h1 class="display-4">Add User</h1>
+<form method='post' action="/users/create">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" name='firstName' readonly onfocus="this.removeAttribute('readonly');" class="form-control">
+        <label for="lastName">Last Name</label>
+        <input type="text" name='lastName' readonly onfocus="this.removeAttribute('readonly');" class="form-control">
+        <label for="email">Email</label>
+        <input type="text" name='email' readonly onfocus="this.removeAttribute('readonly');" class="form-control">
+        <label for="password">Password</label>
+        <input type="password" name='password' readonly onfocus="this.removeAttribute('readonly');" class="form-control">
+        <br>
+        <input type="radio" name="role" value="admin"> Admin
+        <input type="radio" name="role" value="guest"> Guest
+        <br>
+    </div>
+    <input type="submit" value='submit' class="btn btn-primary">
+</form>
