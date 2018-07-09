@@ -1,4 +1,8 @@
-<h1 class="display-4">Welcome To ArticleBase</h1>
+<h1 class="display-4">Welcome To UserBase,
+    <%= session.user.firstName %>
+</h1>
 <p class="mb-4">This is a Sails.js app for managing users</p>
-<a href="/users/list" class="btn btn-dark">View User List</a>
-<a href="/users/add" class="btn btn-dark">Add A User</a>
+<% if(session.user.role === 'admin') { %>
+    <a href="/users/list" class="btn btn-dark">View User List</a>
+    <a href="/users/add" class="btn btn-dark">Add A User</a>
+    <% } %>

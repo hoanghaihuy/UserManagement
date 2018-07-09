@@ -27,6 +27,7 @@ module.exports = {
     },
     role: {
       type: 'string',
+      defaultsTo: 'guest',
     },
     createdAt: {
       type: 'string',

@@ -60,13 +60,18 @@ module.exports = {
     });
   },
   update: function(req, res) {
+    const salt = bcrypt.genSaltSync(8);
+    const hashedPassword =
+      req.body.password !== ''
+        ? bcrypt.hashSync(req.body.password, salt)
+        : null;
     Users.update(
       { id: req.params.id },
       {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password,
+        password: hashedPassword ? hashedPassword : req.params.password,
         createdAt: req.body.createdAt,
         updatedAt: new Date(),
       },
@@ -102,10 +107,10 @@ module.exports = {
       });
 
       req.session.authenticated = true;
-      req.session.User = user;
+      req.session.user = user;
       req.session.token = token;
-      res.redirect('/homepage');
-      //   res.status(200).send({ auth: true, token: token });
+      console.log(req.session);
+      res.view('pages/homepage', { user });
     });
   },
   logout: (req, res) => {
