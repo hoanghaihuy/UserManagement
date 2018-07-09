@@ -12,15 +12,21 @@ const config = require('../../config/config');
 
 module.exports = {
   list: function(req, res) {
-    Users.find().exec((err, users) => {
-      if (err) {
-        res.send(500, { error: 'Database Error' });
-      }
-      res.view('list', { users });
-    });
+    if (req.session.token) {
+      Users.find().exec((err, users) => {
+        if (err) {
+          res.send(500, { error: 'Database Error' });
+        }
+        res.view('list', { users });
+      });
+    }
+    res.status(500).send('You must log in');
   },
   add: function(req, res) {
-    res.view('add');
+    if (req.session.token) {
+      res.view('add');
+    }
+    res.status(500).send('You must log in');
   },
   create: function(req, res) {
     const salt = bcrypt.genSaltSync(8);
